@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- TREE VIEW -->
+
+    <record id="view_cong_viec_log_tree" model="ir.ui.view">
+        <field name="name">cong.viec.log.tree</field>
+        <field name="model">cong_viec_log</field>
+        <field name="arch" type="xml">
+            <tree>
+
+                <field name="cong_viec_id"/>
+
+                <field name="nhan_vien_id"/>
+
+                <field name="ngay_cap_nhat"/>
+
+                <field name="noi_dung"/>
+
+            </tree>
+        </field>
+    </record>
+
+    <!-- FORM VIEW -->
+
+    <record id="view_cong_viec_log_form" model="ir.ui.view">
+        <field name="name">cong.viec.log.form</field>
+        <field name="model">cong_viec_log</field>
+        <field name="arch" type="xml">
+
+            <form>
+
+                <sheet>
+
+                    <div class="oe_read_only"
+                         style="font-size:25px">
+                        Nhật ký công việc
+                    </div>
+
+                    <group col="4"
+                           string="Thông tin cập nhật">
+
+                        <field name="cong_viec_id"/>
+
+                        <field name="nhan_vien_id"/>
+
+                        <field name="ngay_cap_nhat"
+                               readonly="1"/>
+
+                    </group>
+
+                    <group string="Nội dung">
+
+                        <field name="noi_dung"/>
+
+                    </group>
+
+                </sheet>
+
+            </form>
+
+        </field>
+    </record>
+
+    <!-- SEARCH VIEW -->
+
+    <record id="cong_viec_log_search" model="ir.ui.view">
+        <field name="name">cong.viec.log.search</field>
+        <field name="model">cong_viec_log</field>
+        <field name="arch" type="xml">
+
+            <search>
+
+                <field name="cong_viec_id"/>
+
+                <field name="nhan_vien_id"/>
+
+                <field name="ngay_cap_nhat"/>
+
+                <separator/>
+
+                <group expand="0"
+                       string="Nhóm">
+
+                    <filter
+                        string="Theo công việc"
+                        name="group_cong_viec"
+                        context="{'group_by':'cong_viec_id'}"/>
+
+                    <filter
+                        string="Theo nhân viên"
+                        name="group_nhan_vien"
+                        context="{'group_by':'nhan_vien_id'}"/>
+
+                </group>
+
+            </search>
+
+        </field>
+
+    </record>
+
+    <!-- ACTION -->
+
+    <record id="action_cong_viec_log" model="ir.actions.act_window">
+        <field name="name">Nhật ký công việc</field>
+        <field name="res_model">cong_viec_log</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="cong_viec_log_search"/>
+
+    </record>
+
+</odoo>

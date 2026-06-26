@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- TREE VIEW -->
+
+    <record id="view_thanh_vien_tree"
+            model="ir.ui.view">
+
+        <field name="name">thanh.vien.tree</field>
+        <field name="model">thanh_vien_du_an</field>
+        <field name="arch" type="xml">
+
+            <tree>
+
+                <field name="du_an_id"/>
+
+                <field name="nhan_vien_id"/>
+
+                <field name="vai_tro"/>
+
+            </tree>
+
+        </field>
+
+    </record>
+
+    <!-- FORM VIEW -->
+
+    <record id="view_thanh_vien_form" model="ir.ui.view">
+        <field name="name">thanh.vien.form</field>
+        <field name="model">thanh_vien_du_an</field>
+        <field name="arch" type="xml">
+
+            <form>
+
+                <sheet>
+
+                    <div class="oe_read_only"
+                         style="font-size:25px">
+                        Thành viên dự án
+                    </div>
+
+                    <group col="4"
+                           string="Thông tin chung">
+
+                        <field name="du_an_id"/>
+
+                        <field name="nhan_vien_id"/>
+
+                        <field name="vai_tro"/>
+
+                    </group>
+
+                    <group string="Ghi chú">
+
+                        <field name="ghi_chu"/>
+
+                    </group>
+
+                </sheet>
+
+            </form>
+
+        </field>
+
+    </record>
+
+    <!-- SEARCH VIEW -->
+    <record id="view_thanh_vien_search" model="ir.ui.view">
+        <field name="name">thanh.vien.search</field>
+        <field name="model">thanh_vien_du_an</field>
+        <field name="arch" type="xml">
+
+            <search>
+
+                <field name="du_an_id"/>
+
+                <field name="nhan_vien_id"/>
+
+                <field name="vai_tro"/>
+
+                <separator/>
+
+                <filter
+                    string="Leader"
+                    name="leader"
+                    domain="[('vai_tro','=','leader')]"/>
+
+                <filter
+                    string="Developer"
+                    name="dev"
+                    domain="[('vai_tro','=','dev')]"/>
+
+                <filter
+                    string="Tester"
+                    name="tester"
+                    domain="[('vai_tro','=','tester')]"/>
+
+                <filter
+                    string="Business Analyst"
+                    name="ba"
+                    domain="[('vai_tro','=','ba')]"/>
+
+                <group expand="0"
+                       string="Nhóm theo">
+
+                    <filter
+                        name="group_du_an"
+                        string="Dự án"
+                        context="{'group_by':'du_an_id'}"/>
+
+                    <filter
+                        name="group_vai_tro"
+                        string="Vai trò"
+                        context="{'group_by':'vai_tro'}"/>
+
+                </group>
+
+            </search>
+
+        </field>
+
+    </record>
+
+    <!-- ACTION -->
+
+    <record id="action_thanh_vien" model="ir.actions.act_window">
+        <field name="name">Thành viên dự án</field>
+        <field name="res_model">thanh_vien_du_an</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_thanh_vien_search"/>
+    </record>
+
+</odoo>

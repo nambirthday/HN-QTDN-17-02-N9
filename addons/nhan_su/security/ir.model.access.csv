@@ -1,7 +1,7 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_nhan_vien,nhan_vien.nhan_vien,model_nhan_vien,base.group_user,1,1,1,1
-access_don_vi,don_vi.don_vi,model_don_vi,base.group_user,1,1,1,1
-access_chuc_vu,chuc_vu.chuc_vu,model_chuc_vu,base.group_user,1,1,1,1
-access_lich_su_cong_tac,lich_su_cong_tac.lich_su_cong_tac,model_lich_su_cong_tac,base.group_user,1,1,1,1
-access_chung_chi_bang_cap,chung_chi_bang_cap.chung_chi_bang_cap,model_chung_chi_bang_cap,base.group_user,1,1,1,1
-access_danh_sach_chung_chi_bang_cap,danh_sach_chung_chi_bang_cap.danh_sach_chung_chi_bang_cap,model_danh_sach_chung_chi_bang_cap,base.group_user,1,1,1,1
+access_nhan_vien_user,nhan_vien.user,model_nhan_vien,base.group_user,1,1,1,0
+access_don_vi_user,don_vi.user,model_don_vi,base.group_user,1,1,0,0
+access_chuc_vu_user,chuc_vu.user,model_chuc_vu,base.group_user,1,1,0,0
+access_lich_su_user,lich_su.user,model_lich_su_cong_tac,base.group_user,1,1,1,0
+access_ccbc_user,chung_chi.user,model_chung_chi_bang_cap,base.group_user,1,1,0,0
+access_dschc_user,dscc.user,model_danh_sach_chung_chi_bang_cap,base.group_user,1,1,1,0

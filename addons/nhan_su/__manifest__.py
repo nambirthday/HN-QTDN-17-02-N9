@@ -1,40 +1,58 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "nhan_su",
+    'name': 'Quản Lý Nhân Sự',
 
-    'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
+    'version': '1.0',
+
+    'category': 'Human Resources',
+
+    'summary': 'Quản lý nhân viên, đơn vị, chức vụ và chứng chỉ',
 
     'description': """
-        Long description of module's purpose
+Module Quản Lý Nhân Sự
+
+Chức năng:
+- Quản lý nhân viên
+- Quản lý đơn vị
+- Quản lý chức vụ
+- Quản lý lịch sử công tác
+- Quản lý chứng chỉ, bằng cấp
+- Thống kê KPI nhân viên
+- Theo dõi thông tin nhân sự doanh nghiệp
     """,
 
-    'author': "My Company",
-    'website': "http://www.yourcompany.com",
+    'author': 'LeeSjn',
 
-    # Categories can be used to filter modules in modules listing
-    # Check https://github.com/odoo/odoo/blob/15.0/odoo/addons/base/data/ir_module_category_data.xml
-    # for the full list
-    'category': 'Uncategorized',
-    'version': '0.1',
+    'website': 'http://www.yourcompany.com',
 
-    # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'license': 'LGPL-3',
 
-    # always loaded
+    'depends': [
+        'base'
+    ],
+
     'data': [
+
         'security/ir.model.access.csv',
+
         'views/chuc_vu.xml',
         'views/don_vi.xml',
         'views/nhan_vien.xml',
         'views/lich_su_cong_tac.xml',
         'views/chung_chi_bang_cap.xml',
         'views/danh_sach_chung_chi_bang_cap.xml',
+
         'views/menu.xml',
+
     ],
-    # only loaded in demonstration mode
+
     'demo': [
         'demo/demo.xml',
     ],
+
+    'installable': True,
+
+    'application': True,
+
+    'auto_install': False,
 }

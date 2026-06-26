@@ -8,3 +8,11 @@ class ChucVu(models.Model):
 
     ma_chuc_vu = fields.Char("Mã chức vụ", required=True)
     ten_chuc_vu = fields.Char("Tên chức vụ", required=True)
+    
+    _sql_constraints = [
+        (
+            'ma_chuc_vu_unique',
+            'unique(ma_chuc_vu)',
+            'Mã chức vụ đã tồn tại!'
+        )
+    ]

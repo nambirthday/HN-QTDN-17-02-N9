@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_cong_viec_user,cong_viec.user,model_cong_viec,base.group_user,1,1,1,0
+
+access_cong_viec_log_user,cong_viec_log.user,model_cong_viec_log,base.group_user,1,1,1,0
+
+access_cong_viec_manager,cong_viec.manager,model_cong_viec,base.group_system,1,1,1,1
+
+access_cong_viec_log_manager,cong_viec_log.manager,model_cong_viec_log,base.group_system,1,1,1,1

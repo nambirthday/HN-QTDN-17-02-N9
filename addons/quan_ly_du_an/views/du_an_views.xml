@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ==========================
+         TREE VIEW
+    =========================== -->
+
+    <record id="view_du_an_tree" model="ir.ui.view">
+        <field name="name">du.an.tree</field>
+        <field name="model">du_an</field>
+        <field name="arch" type="xml">
+
+            <tree>
+
+                <field name="ma_du_an"/>
+                <field name="ten_du_an"/>
+                <field name="quan_ly_du_an_id"/>
+
+                <field name="tong_thanh_vien"/>
+                <field name="tong_giai_doan"/>
+
+                <field name="trang_thai"/>
+
+            </tree>
+
+        </field>
+    </record>
+
+    <!-- ==========================
+         FORM VIEW
+    =========================== -->
+
+    <record id="view_du_an_form" model="ir.ui.view">
+        <field name="name">du.an.form</field>
+        <field name="model">du_an</field>
+        <field name="arch" type="xml">
+
+            <form>
+
+                <header>
+                    <button name="action_send_telegram_notification"
+                            string="G?i Telegram"
+                            type="object"
+                            class="oe_highlight"/>
+                </header>
+
+                <sheet>
+
+                    <div class="oe_title">
+                        <h1>
+                            <field name="ten_du_an"/>
+                        </h1>
+                    </div>
+
+                    <!-- THÔNG TIN CHUNG -->
+                    <group col="4" string="Thông tin chung">
+
+                        <field name="ma_du_an"/>
+                        <field name="quan_ly_du_an_id"/>
+                        <field name="trang_thai" readonly="1"/>
+
+                        <field name="ngay_bat_dau"/>
+                        <field name="ngay_ket_thuc"/>
+
+                    </group>
+
+                    <!-- THỐNG KÊ (ĐÃ SỬA) -->
+                    <group string="Thống kê">
+
+                        <field name="tong_thanh_vien" readonly="1"/>
+                        <field name="tong_giai_doan" readonly="1"/>
+
+                    </group>
+
+                    <group string="Gợi ý AI" colspan="2">
+                        <field name="ai_goi_y_cong_viec" readonly="1"/>
+                    </group>
+
+                    <button name="action_generate_ai_suggestions"
+                            string="Làm mới gợi ý AI"
+                            type="object"
+                            class="oe_highlight"/>
+
+                    <!-- NOTEBOOK -->
+                    <notebook>
+
+                        <page string="Mô tả">
+
+                            <field name="mo_ta"/>
+
+                        </page>
+
+                        <page string="Thành viên">
+
+                            <field name="thanh_vien_ids">
+
+                                <tree editable="bottom">
+
+                                    <field name="nhan_vien_id"/>
+                                    <field name="ma_dinh_danh"/>
+                                    <field name="vai_tro"/>
+                                    <field name="ngay_tham_gia"/>
+                                    <field name="tong_cong_viec"/>
+
+                                </tree>
+
+                            </field>
+
+                        </page>
+
+                        <page string="Giai đoạn">
+
+                            <field name="giai_doan_ids">
+
+                                <tree>
+
+                                    <field name="ten_giai_doan"/>
+                                    <field name="ngay_bat_dau"/>
+                                    <field name="ngay_ket_thuc"/>
+                                    <field name="tong_cong_viec"/>
+                                    <field name="tien_do"/>
+                                    <field name="trang_thai"/>
+
+                                </tree>
+
+                            </field>
+
+                        </page>
+
+                    </notebook>
+
+                </sheet>
+
+            </form>
+
+        </field>
+    </record>
+
+    <!-- ==========================
+         SEARCH VIEW
+    =========================== -->
+
+    <record id="view_du_an_search" model="ir.ui.view">
+        <field name="name">du.an.search</field>
+        <field name="model">du_an</field>
+        <field name="arch" type="xml">
+
+            <search>
+
+                <field name="ma_du_an"/>
+                <field name="ten_du_an"/>
+                <field name="quan_ly_du_an_id"/>
+                <field name="trang_thai"/>
+
+                <separator/>
+
+                <filter string="Mới tạo"
+                        name="moi_tao"
+                        domain="[('trang_thai','=','moi_tao')]"/>
+
+                <filter string="Đang thực hiện"
+                        name="dang_thuc_hien"
+                        domain="[('trang_thai','=','dang_thuc_hien')]"/>
+
+                <filter string="Hoàn thành"
+                        name="hoan_thanh"
+                        domain="[('trang_thai','=','hoan_thanh')]"/>
+
+                <group expand="0" string="Nhóm theo">
+
+                    <filter string="Quản lý dự án"
+                            name="group_manager"
+                            context="{'group_by':'quan_ly_du_an_id'}"/>
+
+                    <filter string="Trạng thái"
+                            name="group_status"
+                            context="{'group_by':'trang_thai'}"/>
+
+                </group>
+
+            </search>
+
+        </field>
+    </record>
+
+    <!-- ==========================
+         ACTION
+    =========================== -->
+
+    <record id="action_du_an" model="ir.actions.act_window">
+
+        <field name="name">Dự án</field>
+        <field name="res_model">du_an</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_du_an_search"/>
+
+    </record>
+
+</odoo>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ==========================
+         TREE VIEW
+    =========================== -->
+
+    <record id="view_giai_doan_tree" model="ir.ui.view">
+
+        <field name="name">giai.doan.tree</field>
+        <field name="model">giai_doan_du_an</field>
+
+        <field name="arch" type="xml">
+
+            <tree>
+
+                <field name="ten_giai_doan"/>
+
+                <field name="du_an_id"/>
+
+                <field name="ngay_bat_dau"/>
+
+                <field name="ngay_ket_thuc"/>
+
+                <field name="tong_cong_viec"/>
+
+                <field name="tien_do"/>
+
+                <field name="trang_thai"/>
+
+            </tree>
+
+        </field>
+
+    </record>
+
+    <!-- ==========================
+         FORM VIEW
+    =========================== -->
+
+    <record id="view_giai_doan_form" model="ir.ui.view">
+
+        <field name="name">giai.doan.form</field>
+
+        <field name="model">giai_doan_du_an</field>
+
+        <field name="arch" type="xml">
+
+            <form>
+
+                <sheet>
+
+                    <div class="oe_title">
+                        <h1>
+                            <field name="ten_giai_doan"/>
+                        </h1>
+                    </div>
+
+                    <group col="4" string="Thông tin chung">
+
+                        <field name="du_an_id"/>
+
+                        <field name="ngay_bat_dau"/>
+
+                        <field name="ngay_ket_thuc"/>
+
+                        <field name="trang_thai" readonly="1"/>
+
+                        <field name="tong_cong_viec" readonly="1"/>
+
+                        <field name="tien_do" readonly="1"/>
+
+                    </group>
+
+                    <!-- mô tả chỉ dùng khi model có field mo_ta -->
+                    <group string="Mô tả">
+
+                        <field name="mo_ta"/>
+
+                    </group>
+
+                </sheet>
+
+            </form>
+
+        </field>
+
+    </record>
+
+    <!-- ==========================
+         SEARCH VIEW
+    =========================== -->
+
+    <record id="view_giai_doan_search"
+            model="ir.ui.view">
+
+        <field name="name">giai.doan.search</field>
+
+        <field name="model">giai_doan_du_an</field>
+
+        <field name="arch" type="xml">
+
+            <search>
+
+                <field name="ten_giai_doan"/>
+
+                <field name="du_an_id"/>
+
+                <field name="trang_thai"/>
+
+                <separator/>
+
+                <filter string="Chưa bắt đầu"
+                        name="chua_bat_dau"
+                        domain="[('trang_thai','=','chua_bat_dau')]"/>
+
+                <filter string="Đang thực hiện"
+                        name="dang_thuc_hien"
+                        domain="[('trang_thai','=','dang_thuc_hien')]"/>
+
+                <filter string="Hoàn thành"
+                        name="hoan_thanh"
+                        domain="[('trang_thai','=','hoan_thanh')]"/>
+
+            </search>
+
+        </field>
+
+    </record>
+
+    <!-- ==========================
+         ACTION
+    =========================== -->
+
+    <record id="action_giai_doan"
+            model="ir.actions.act_window">
+
+        <field name="name">Giai đoạn dự án</field>
+
+        <field name="res_model">giai_doan_du_an</field>
+
+        <field name="view_mode">tree,form</field>
+
+        <field name="search_view_id" ref="view_giai_doan_search"/>
+
+    </record>
+
+</odoo>

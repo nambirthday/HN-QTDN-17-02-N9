@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- MENU GỐC -->
+
+    <menuitem
+        id="menu_cong_viec_root"
+        name="Quản lý công việc"
+        sequence="30"/>
+
+    <!-- QUẢN LÝ CÔNG VIỆC -->
+
+    <menuitem
+        id="menu_quan_ly_cong_viec"
+        name="Quản lý công việc"
+        parent="menu_cong_viec_root"
+        sequence="1"/>
+
+    <menuitem
+        id="menu_cong_viec"
+        name="Danh sách công việc"
+        parent="menu_quan_ly_cong_viec"
+        action="action_cong_viec"
+        sequence="1"/>
+
+    <menuitem
+        id="menu_cong_viec_log"
+        name="Nhật ký công việc"
+        parent="menu_quan_ly_cong_viec"
+        action="action_cong_viec_log"
+        sequence="2"/>
+
+</odoo>

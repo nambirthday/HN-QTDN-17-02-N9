@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_hr_phieu_luong_tree" model="ir.ui.view">
+        <field name="name">hr.phieu.luong.tree</field>
+        <field name="model">hr_phieu_luong</field>
+        <field name="arch" type="xml">
+            <tree string="Phiếu lương tháng">
+                <field name="nhan_vien_id"/>
+                <field name="thang"/>
+                <field name="nam"/>
+                <field name="so_ngay_cong"/>
+                <field name="luong_thuc_linh" sum="Tổng quỹ lương thực lĩnh"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_hr_phieu_luong_form" model="ir.ui.view">
+        <field name="name">hr.phieu.luong.form</field>
+        <field name="model">hr_phieu_luong</field>
+        <field name="arch" type="xml">
+            <form string="Phiếu lương tháng">
+                <sheet>
+                    <group col="4">
+                        <field name="nhan_vien_id"/>
+                        <newline/>
+                        <field name="thang"/>
+                        <field name="nam"/>
+                    </group>
+                    <group string="Kết quả tính toán lương tháng">
+                        <field name="so_ngay_cong" readonly="1"/>
+                        <field name="luong_thuc_linh" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_hr_phieu_luong" model="ir.actions.act_window">
+        <field name="name">Tính phiếu lương tháng</field>
+        <field name="res_model">hr_phieu_luong</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

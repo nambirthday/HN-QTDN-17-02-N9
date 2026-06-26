@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- MENU GỐC -->
+
+    <menuitem
+        id="menu_du_an_root"
+        name="Quản lý dự án"
+        sequence="20"/>
+
+    <!-- NHÓM QUẢN LÝ -->
+
+    <menuitem
+        id="menu_quan_ly_du_an"
+        name="Quản lý dự án"
+        parent="menu_du_an_root"
+        sequence="1"/>
+
+    <!-- DỰ ÁN -->
+
+    <menuitem
+        id="menu_du_an"
+        name="Danh sách dự án"
+        parent="menu_quan_ly_du_an"
+        action="action_du_an"
+        sequence="1"/>
+
+    <!-- GIAI ĐOẠN -->
+
+    <menuitem
+        id="menu_giai_doan"
+        name="Giai đoạn dự án"
+        parent="menu_quan_ly_du_an"
+        action="action_giai_doan"
+        sequence="2"/>
+
+    <!-- THÀNH VIÊN -->
+
+    <menuitem
+        id="menu_thanh_vien"
+        name="Thành viên dự án"
+        parent="menu_quan_ly_du_an"
+        action="action_thanh_vien"
+        sequence="3"/>
+
+</odoo>
